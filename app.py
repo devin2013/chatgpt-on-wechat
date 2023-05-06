@@ -47,7 +47,9 @@ def run():
             PluginManager().load_plugins()
 
         # startup channel
-        channel.startup()
+        host = '0.0.0.0'
+        port = int(os.environ.get('PORT', 5000))
+        channel.startup(host=host, port=port)
     except Exception as e:
         logger.error("App startup failed!")
         logger.exception(e)
